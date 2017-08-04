@@ -11,27 +11,8 @@ export class DashboardComponent implements OnInit {
   constructor(private BooksdashboardService:BooksdashboardService) { }
 
   ngOnInit() {
-    this.BooksdashboardService.GetBookData().subscribe(a=>console.log(a))
-    $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-      console.log(data)
-      Highcharts.stockChart('container', {
-        rangeSelector: {
-          selected: 1
-        },
-        title: {
-          text: 'AAPL Stock Price'
-        },
-        series: [{
-          name: 'AAPL',
-          data: data,
-          type: 'column',
-          tooltip: {
-            valueDecimals: 2
-          }
-        }]
-      });
-    });
-    Highcharts.chart('pie', {
+    this.BooksdashboardService.GetBookData().subscribe(a=>{
+      Highcharts.chart('pie', {
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -39,7 +20,7 @@ export class DashboardComponent implements OnInit {
         type: 'pie'
       },
       title: {
-        text: 'Browser market shares January, 2015 to May, 2015'
+        text: 'author'+":"+'age'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -58,9 +39,19 @@ export class DashboardComponent implements OnInit {
         }
       },
       series: [{
-        name: 'Brands',
+        name: 'age',
         colorByPoint: true,
-        data: [{
+        data: a
+      }]
+    })
+    })
+
+    ;
+  }
+
+}
+/*
+{
           name: 'Microsoft Internet Explorer',
           y: 56.33
         }, {
@@ -80,9 +71,5 @@ export class DashboardComponent implements OnInit {
         }, {
           name: 'Proprietary or Undetectable',
           y: 0.2
-        }]
-      }]
-    });
-  }
-
-}
+        }
+*/

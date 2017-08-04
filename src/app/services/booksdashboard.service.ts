@@ -16,7 +16,7 @@ export class BooksdashboardService {
       .map(res => {
         let data = [{ a: 1, b: 10 }, { a: 2, b: 20 }, { a: 1, b: 30 }];
 
-        let r = alasql('SELECT author, SUM(age) AS age FROM ? GROUP BY author', [res.json()]);
+        let r = alasql('SELECT author AS name, SUM(age) AS y FROM ? GROUP BY author', [res.json()]);
 
         console.log(r); // [{"a":1,"b":40},{"a":2,"b":20}]
         return r//res.json()

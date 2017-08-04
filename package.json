@@ -28,7 +28,6 @@
     "express": "^4.15.3",
     "highcharts": "^5.0.14",
     "jquery": "^3.2.1",
-    "json-groupby": "^1.0.2",
     "materialize-css": "^0.100.1",
     "ng-socket-io": "^0.1.10",
     "rxjs": "^5.1.0",
