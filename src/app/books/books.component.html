@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="input-field col s12">
+      <a class="btn waves-effect waves-light" [routerLink]="['/booksform/create']">
+        <i class="material-icons left">add</i>新增資料</a>
+        </div>
+  <table class="highlight striped bordered responsive-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>author</th>
+        <th>book</th>
+        <th>place</th>
+        <th>count</th>
+        <th>price</th>
+        <th>age</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let b of BooksData | async">
+        <td style="cursor: pointer; cursor: hand;">
+          <i class="material-icons" (click)="click('detail',b?.id)">pageview</i>
+          <i class="material-icons" (click)="click('edit',b?.id)">edit</i>
+          <i class="material-icons" (click)="click('delete',b?.id)">delete</i>
+        </td>
+        <td>{{b?.author}}</td>
+        <td>{{b?.book}}</td>
+        <td>{{b?.place}}</td>
+        <td>{{b?.count}}</td>
+        <td>{{b?.price}}</td>
+        <td>{{b?.age}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

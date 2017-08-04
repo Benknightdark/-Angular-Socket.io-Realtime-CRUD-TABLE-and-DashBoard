@@ -1,0 +1,64 @@
+<div class="row">
+  <h2>{{formName}}</h2>
+</div>
+<div class="row" *ngIf="Showform">
+  <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="author" *ngIf="this.ActionName!='create'">author</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="author" type="text" class="validate" name="author" [(ngModel)]="BooksData.author" required [disabled]="DisableInput"
+        />
+        <label for="author" *ngIf="this.ActionName=='create'">author</label>
+      </div>
+      <div class="input-field col s12">
+        <label for="book" *ngIf="this.ActionName!='create'">book</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="book" type="text" class="validate" name="book" [(ngModel)]="BooksData.book" required [disabled]="DisableInput"
+        />
+        <label for="book" *ngIf="this.ActionName=='create'">book</label>
+      </div>
+      <div class="input-field col s12">
+        <label for="place" *ngIf="this.ActionName!='create'">place</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="place" type="text" class="validate" name="place" [(ngModel)]="BooksData.place" required [disabled]="DisableInput"
+        />
+        <label for="place" *ngIf="this.ActionName=='create'">place</label>
+      </div>
+      <div class="input-field col s12">
+        <label for="count" *ngIf="this.ActionName!='create'">count</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="count" type="number" class="validate" name="count" [(ngModel)]="BooksData.count" required [disabled]="DisableInput"
+        />
+        <label for="count" *ngIf="this.ActionName=='create'">count</label>
+      </div>
+      <div class="input-field col s12">
+        <label for="price" *ngIf="this.ActionName!='create'">price</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="price" type="number" class="validate" name="price" [(ngModel)]="BooksData.price" required [disabled]="DisableInput"
+        />
+        <label for="price" *ngIf="this.ActionName=='create'">price</label>
+      </div>
+      <div class="input-field col s12">
+        <label for="age" *ngIf="this.ActionName!='create'">age</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="age" type="number" class="validate" name="age" [(ngModel)]="BooksData.age" required [disabled]="DisableInput"
+        />
+        <label for="age" *ngIf="this.ActionName=='create'">age</label>
+      </div>
+
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="f['invalid']">
+        {{ButtonName}}<i class="material-icons right">send</i>
+       </button>
+    <a class="btn waves-effect waves-light" [routerLink]="['/books']">
+        <i class="material-icons left">cancel</i>返回</a>
+  </form>
+
+</div>
