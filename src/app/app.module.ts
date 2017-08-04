@@ -14,6 +14,7 @@ import { BooksformComponent } from './booksform/booksform.component';
 import { BooksdashboardService } from "app/services/booksdashboard.service";
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { BooksioService } from "app/services/booksio.service";
+import * as alasql from 'alasql';
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({

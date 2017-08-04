@@ -7,10 +7,10 @@ import { BooksformComponent } from "app/booksform/booksform.component";
 
 const routes: Routes = [
   {
-    path: '', component: BooksComponent
+    path: '', component: DashboardComponent
   },
   {
-    path: 'DashBoard', component: DashboardComponent
+    path: 'dashboard', component: DashboardComponent
   },
   {
     path: 'books', component: BooksComponent
