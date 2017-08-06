@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksdashboardService } from "app/services/booksdashboard.service";
+import { BooksioService } from "app/services/booksio.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,11 +9,32 @@ import { BooksdashboardService } from "app/services/booksdashboard.service";
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private BooksdashboardService:BooksdashboardService) { }
+  constructor(private BooksdashboardService: BooksdashboardService,
+    private BookioService: BooksioService
+  ) { }
 
   ngOnInit() {
-    this.BooksdashboardService.GetBookData().subscribe(a=>{
-      Highcharts.chart('pie', {
+    this.InitDashBoard();
+    this.BookioService.getDelete().subscribe(r => {
+      console.log("Get Delete")
+      this.InitDashBoard();
+    })
+    this.BookioService.getCreate().subscribe(r => {
+      console.log("Get Create")
+      this.InitDashBoard();
+    })
+    this.BookioService.getEdit().subscribe(r => {
+      console.log("Get Edit")
+      this.InitDashBoard();
+    })
+  }
+  InitDashBoard() {
+    this.BooksdashboardService.GetBookData().subscribe(SeriesData => {
+      this.PieChart(SeriesData)
+    })
+  }
+  PieChart(SeriesData) {
+    Highcharts.chart('pie', {
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -20,7 +42,7 @@ export class DashboardComponent implements OnInit {
         type: 'pie'
       },
       title: {
-        text: 'author'+":"+'age'
+        text: 'author' + ":" + 'age'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -41,12 +63,9 @@ export class DashboardComponent implements OnInit {
       series: [{
         name: 'age',
         colorByPoint: true,
-        data: a
+        data: SeriesData
       }]
     })
-    })
-
-    ;
   }
 
 }

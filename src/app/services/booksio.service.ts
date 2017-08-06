@@ -4,6 +4,7 @@ import { Socket } from 'ng-socket-io';
 export class BooksioService {
 
   constructor(private socket: Socket) { }
+
   sendDelete(status) {
     this.socket.emit("Delete", status);
   }
